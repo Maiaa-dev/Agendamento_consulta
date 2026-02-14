@@ -3,6 +3,6 @@ medicos = []
 def CadastrarMedico(medico):
     medicos.append(medico)
 
-def ListarMedico():
+def ListarMedicos():
     return medicos
     
