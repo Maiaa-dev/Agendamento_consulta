@@ -1,7 +1,8 @@
 consultas = []
 
-def CadastrarConsulta(consulta):
-    consultas.append(consulta)
+class ConsultaRepository:
+    def CadastrarConsulta(consulta):
+        consultas.append(consulta)
 
-def ListarConsultas():
-    return consultas
+    def ListarConsultas():
+        return consultas

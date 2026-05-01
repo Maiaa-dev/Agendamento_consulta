@@ -1,8 +1,9 @@
 medicos = []
 
-def CadastrarMedico(medico):
-    medicos.append(medico)
+class MedicoRepository:
+    def CadastrarMedico(medico):
+        medicos.append(medico)
 
-def ListarMedicos():
-    return medicos
+    def ListarMedicos():
+        return medicos
     

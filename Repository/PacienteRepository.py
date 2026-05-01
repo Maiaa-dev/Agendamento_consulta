@@ -1,13 +1,14 @@
-pacientes = []
+from db.conexao import CriarConexao
 
-#def -> para definir funções
-#pacientes é uma lista, onde armazenaremos os objetos/dados
-#cada paciente tem seus atributos na classe Paciente, onde enviaremos para lá, 
-# meio que pacientes é uma lista temporária para guardar os dados do objeto em questão
+class PacienteRepository:
+    def ListarPacientes():
+        conexao = CriarConexao()
+        cursor = conexao.cursor(dictionary=True)
 
-def CadastrarPaciente(paciente):
-    pacientes.append(paciente)
+        cursor.execute("SELECT * FROM pacientes")
+        resultado = cursor.fetchall()
 
-def ListarPacientes():
-    return pacientes
+        cursor.close()
+        conexao.close()
 
+        return resultado

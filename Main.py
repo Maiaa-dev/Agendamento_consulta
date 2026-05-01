@@ -1,11 +1,17 @@
 from Classes.Paciente import Paciente
-from Repository.PacienteRepository import CadastrarPaciente,ListarPacientes
+from Repository.PacienteRepository import PacienteRepository
+
+PacienteRepo = PacienteRepository
 
 from Classes.Medico import Medico
-from Repository.MedicoRepository import CadastrarMedico,ListarMedicos
+from Repository.MedicoRepository import MedicoRepository
+
+MedicoRepo = MedicoRepository
 
 from Classes.Consulta import Consulta
-from Repository.ConsultaRepository import CadastrarConsulta,ListarConsultas
+from Repository.ConsultaRepository import ConsultaRepository
+
+ConsultaRepo = ConsultaRepository
 
 def menu():
     while True:
@@ -29,8 +35,10 @@ def menu():
             escolha = int(input())
 
             if escolha == 1:
-                for paciente in ListarPacientes():
+                pacientes = PacienteRepo.ListarPacientes()
+                for paciente in pacientes:
                     print(paciente)
+            
             elif escolha == 2:
                 id_paciente = 1
                 nome = input("Nome: ")
@@ -39,7 +47,7 @@ def menu():
                 email = input("Email: ")
 
                 paciente = Paciente(id_paciente,nome,sobrenome,idade,email)
-                CadastrarPaciente(paciente)
+                PacienteRepo.CadastrarPaciente(paciente)
                 menu()
             elif escolha == 3:
                 menu()
@@ -57,7 +65,7 @@ def menu():
             escolha = int(input())
 
             if escolha == 1:
-                for medico in ListarMedicos():
+                for medico in MedicoRepo.ListarMedicos():
                     print(medico)
             elif escolha == 2:
                 id_medico = 1
@@ -66,7 +74,7 @@ def menu():
                 especialidade = input("Especialidade: ")
 
                 medico = Medico(id_medico,nome,sobrenome,especialidade)
-                CadastrarMedico(medico)
+                MedicoRepo.CadastrarMedico(medico)
                 menu()
             elif escolha == 3:
                 menu()
@@ -84,7 +92,7 @@ def menu():
             escolha = int(input())
 
             if escolha == 1:
-                for consulta in ListarConsultas():
+                for consulta in ConsultaRepo.ListarConsultas():
                     print(consulta)
             elif escolha == 2:
                 id_consulta = 1
@@ -93,7 +101,7 @@ def menu():
                 horario = input("Horário da consulta: ")
 
                 consulta = Consulta(id_consulta,id_medico,id_paciente,horario)
-                CadastrarConsulta(consulta)
+                ConsultaRepo.CadastrarConsulta(consulta)
                 menu()
             elif escolha == 3:
                 menu()
